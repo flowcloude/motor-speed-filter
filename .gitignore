@@ -1,0 +1,40 @@
+# Build outputs
+MDK-ARM/*.uvguix.*
+MDK-ARM/Objects/
+MDK-ARM/Listings/
+MDK-ARM/RTE/
+MDK-ARM/*.bak
+MDK-ARM/*.dep
+MDK-ARM/JLinkLog.txt
+MDK-ARM/JLinkSettings.ini
+
+# Python cache
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+*.Trae/
+
+# Debug/DebugConfig
+DebugConfig/
+
+# Compiled objects
+*.o
+*.d
+*.crf
+*.htm
+*.lnp
+*.axf
+*.hex
+*.bin
+
+# Temp files
+*.tmp
+*.log
+*.uvoptx.bak
+
+# Generated report Python scripts (keep only source code)
+generate_report.py
+analyze.py
+export_csv.py
