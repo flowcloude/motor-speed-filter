@@ -1,40 +1,29 @@
-# Build outputs
-MDK-ARM/*.uvguix.*
-MDK-ARM/Objects/
-MDK-ARM/Listings/
-MDK-ARM/RTE/
-MDK-ARM/*.bak
-MDK-ARM/*.dep
-MDK-ARM/JLinkLog.txt
-MDK-ARM/JLinkSettings.ini
-
-# Python cache
-__pycache__/
-*.pyc
-
-# IDE
-.vscode/
-*.Trae/
-
-# Debug/DebugConfig
-DebugConfig/
-
-# Compiled objects
-*.o
-*.d
-*.crf
-*.htm
-*.lnp
-*.axf
-*.hex
-*.bin
-
-# Temp files
-*.tmp
+*.pdf
+*.ppt
+*.pptx
+*.docx
+*.py
 *.log
-*.uvoptx.bak
+*.lst
+*.map
+*.dep
+*.sct
+*.scvd
+*.uvguix.*
+*.uvoptx
+*.uvprojx
+*.uvcxproj
+*.ioc.wb
+*.wbdef
+*.settings
+*.extSettings
+*.mxproject
+*.stwb6
 
-# Generated report Python scripts (keep only source code)
-generate_report.py
-analyze.py
-export_csv.py
+motor/Drivers/CMSIS/DSP/DSP_Lib_TestSuite/
+motor/Drivers/CMSIS/NN/
+motor/MCSDK_v6.4.2-Full/
+motor/MDK-ARM/motor/
+motor/STM32CubeIDE/
+
+!README.md
