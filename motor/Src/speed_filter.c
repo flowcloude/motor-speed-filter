@@ -32,7 +32,7 @@ static int16_t  lpfV;
 static float    kEst, kPest;
 static int16_t  medBuf[MEDIAN_WINDOW_SIZE];
 static uint8_t  medIdx;
-static int16_t  curRaw, curMavg, curLpf1, curKalm, curMed;
+int16_t  curRaw, curMavg, curLpf1, curKalm, curMed;
 
 static void ma_update(int16_t in) {
     maBuf[maIdx] = in; maIdx = (maIdx + 1) % MOVING_AVG_WINDOW;

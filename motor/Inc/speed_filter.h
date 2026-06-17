@@ -23,6 +23,9 @@ extern int16_t log_kalm[FILTER_LOG_SIZE];
 extern int16_t log_med[FILTER_LOG_SIZE];
 extern uint16_t log_cnt;
 
+/* 滤波器实时输出 - Motor Pilot可读取 */
+extern int16_t curRaw, curMavg, curLpf1, curKalm, curMed;
+
 void   SpeedFilter_Init(void);
 int16_t SpeedFilter_UpdateAll(int16_t rawSpeed);
 FilterType_t SpeedFilter_GetActive(void);
