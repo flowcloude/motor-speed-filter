@@ -96,9 +96,12 @@ int16_t SpeedFilter_UpdateAll(int16_t rawSpeed)
     }
 
     switch (activeFilter) {
-        case FILTER_NONE: return curRaw; case FILTER_MOVING_AVG: return curMavg;
-        case FILTER_LPF_1ST: return curLpf1; case FILTER_KALMAN: return curKalm;
-        case FILTER_MEDIAN: return curMed; default: return curRaw;
+        case FILTER_NONE: return curRaw; 
+        case FILTER_MOVING_AVG: return curMavg;
+        case FILTER_LPF_1ST: return curLpf1; 
+        case FILTER_KALMAN: return curKalm;
+        case FILTER_MEDIAN: return curMed; 
+        default: return curRaw;
     }
 }
 
@@ -107,8 +110,11 @@ void SpeedFilter_SetActive(FilterType_t t) { if (t < FILTER_COUNT) activeFilter 
 void SpeedFilter_SetAlpha(float a)         { if (a > 0.0f && a <= 1.0f) lpfA = a; }
 const char* SpeedFilter_GetName(FilterType_t t) {
     switch (t) {
-        case FILTER_NONE: return "NONE"; case FILTER_MOVING_AVG: return "MOVING_AVG";
-        case FILTER_LPF_1ST: return "LPF_1ST"; case FILTER_KALMAN: return "KALMAN";
-        case FILTER_MEDIAN: return "MEDIAN"; default: return "?";
+        case FILTER_NONE: return "NONE"; 
+        case FILTER_MOVING_AVG: return "MOVING_AVG";
+        case FILTER_LPF_1ST: return "LPF_1ST"; 
+        case FILTER_KALMAN: return "KALMAN";
+        case FILTER_MEDIAN: return "MEDIAN"; 
+        default: return "?";
     }
 }
