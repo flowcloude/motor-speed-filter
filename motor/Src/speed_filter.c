@@ -28,7 +28,7 @@ static FilterType_t activeFilter = FILTER_LPF_1ST;
 static int16_t  maBuf[MOVING_AVG_WINDOW];
 static uint8_t  maIdx;
 static float    lpfA = DEFAULT_ALPHA;
-static int16_t  lpfV;
+static float    lpfV;
 static float    kEst, kPest;
 static int16_t  medBuf[MEDIAN_WINDOW_SIZE];
 static uint8_t  medIdx;
@@ -40,7 +40,9 @@ static void ma_update(int16_t in) {
     curMavg = (int16_t)(s / MOVING_AVG_WINDOW);
 }
 static void lpf_update(int16_t in) {
-    lpfV = (int16_t)(lpfA * in + (1.0f - lpfA) * lpfV); curLpf1 = lpfV;
+    /* float内部状态保留精度，输出时才取整，避免截断累积误差 */
+    lpfV = lpfA * in + (1.0f - lpfA) * lpfV;
+    curLpf1 = (int16_t)lpfV;
 }
 static void kal_update(int16_t in) {
     float p = kPest + KALMAN_Q; float g = p / (p + KALMAN_R);
@@ -65,7 +67,7 @@ void SpeedFilter_Init(void)
     memset(log_med,  0, sizeof(log_med));
     log_cnt = 0; filterSeeded = false; logThrottle = 0;
     activeFilter = FILTER_LPF_1ST;
-    maIdx = 0; lpfV = 0; kEst = 0; kPest = 1; medIdx = 0;
+    maIdx = 0; lpfV = 0.0f; kEst = 0.0f; kPest = 1.0f; medIdx = 0;
     curRaw = 0; curMavg = 0; curLpf1 = 0; curKalm = 0; curMed = 0;
 }
 
@@ -76,7 +78,7 @@ int16_t SpeedFilter_UpdateAll(int16_t rawSpeed)
     if (!filterSeeded) {
         filterSeeded = true;
         for (int i = 0; i < MOVING_AVG_WINDOW; i++) maBuf[i] = rawSpeed;
-        lpfV = rawSpeed; kEst = (float)rawSpeed;
+        lpfV = (float)rawSpeed; kEst = (float)rawSpeed;
         for (int i = 0; i < MEDIAN_WINDOW_SIZE; i++) medBuf[i] = rawSpeed;
         curMavg = curLpf1 = curKalm = curMed = rawSpeed;
     } else {

@@ -24,6 +24,11 @@ motor/Drivers/CMSIS/DSP/DSP_Lib_TestSuite/
 motor/Drivers/CMSIS/NN/
 motor/MCSDK_v6.4.2-Full/
 motor/MDK-ARM/motor/
+motor/MDK-ARM/DebugConfig/
+motor/MDK-ARM/*_log.txt
+motor/MDK-ARM/*_out.txt
+motor/MDK-ARM/stderr.txt
+motor/MDK-ARM/stdout.txt
 motor/STM32CubeIDE/
 
 !README.md
